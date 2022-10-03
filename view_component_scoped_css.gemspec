@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-require_relative "lib/view_component_in_css/version"
+require_relative "lib/view_component_scoped_css/version"
 
 Gem::Specification.new do |spec|
-  spec.name          = "view_component_in_css"
-  spec.version       = ViewComponentInCss::VERSION
+  spec.name          = "view_component_scoped_css"
+  spec.version       = ViewComponentScopedCss::VERSION
   spec.authors       = ["Masa (Aileron inc)"]
   spec.email         = ["masa@aileron.cc"]
 
@@ -18,8 +18,8 @@ Gem::Specification.new do |spec|
   spec.required_ruby_version = ">= 3.0"
 
   spec.metadata["homepage_uri"] = spec.homepage
-  spec.metadata["source_code_uri"] = "https://github.com/aileron-inc/view_component_in_css"
-  spec.metadata["changelog_uri"] = "https://github.com/aileron-inc/view_component_in_css/blob/master/CHANGELOG.md"
+  spec.metadata["source_code_uri"] = "https://github.com/aileron-inc/view_component_scoped_css"
+  spec.metadata["changelog_uri"] = "https://github.com/aileron-inc/view_component_scoped_css/blob/master/CHANGELOG.md"
 
   # Specify which files should be added to the gem when it is released.
   # The `git ls-files -z` loads the files in the RubyGem that have been added into git.
