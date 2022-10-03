@@ -1,15 +1,15 @@
-# ViewComponentStyled
+# ViewComponentScopedCss
+Provides per-component scoped scss for viewcomponent
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/view_component_in_css`. To experiment with that code, run `bin/console` for an interactive prompt.
+By providing special prefixes as scss class names, you can describe closed styles for each component, so you don't have to worry about css design such as bem.
 
-TODO: Delete this and the text above, and describe your gem
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'view_component_in_css'
+gem 'view_component_scoped_css'
 ```
 
 And then execute:
@@ -18,11 +18,41 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install view_component_in_css
+    $ gem install view_component_scoped_css
 
 ## Usage
 
-TODO: Write usage instructions here
+directory hier
+
+- app/component/application_component.rb
+
+```rb
+class ApplicationComponent < ViewComponent::Base
+  include ViewComponentScopedCss::Base
+end
+```
+
+- app/component/button/component.rb
+```rb
+class Button::Component < ApplicationComponent
+end
+```
+
+- app/component/button/component.scss
+```scss
+:module(component) {
+    color: white;
+    background: green;
+}
+
+```
+
+- app/component/button/component.erb
+```erb
+<%= component_tag :button do %>
+    test
+<% end %>
+```
 
 ## Development
 
@@ -32,7 +62,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/view_component_styled. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/[USERNAME]/view_component_styled/blob/main/CODE_OF_CONDUCT.md).
+Bug reports and pull requests are welcome on GitHub at https://github.com/aileron-inc/view_component_in_css. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/aileron-inc/view_component_in_css/blob/main/CODE_OF_CONDUCT.md).
 
 ## License
 

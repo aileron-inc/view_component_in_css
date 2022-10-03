@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-RSpec.describe ViewComponentInCss do
+RSpec.describe ViewComponentScopedCss do
   it "has a version number" do
-    expect(ViewComponentInCss::VERSION).not_to be_nil
+    expect(ViewComponentScopedCss::VERSION).not_to be_nil
   end
 end
