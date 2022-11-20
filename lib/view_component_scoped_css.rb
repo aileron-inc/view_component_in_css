@@ -20,6 +20,10 @@ module ViewComponentScopedCss
   autoload :Tag
   autoload :Compiler
 
+  def self.tags
+    CurrentContext.render
+  end
+
   def self.configure
     yield config
   end

@@ -7,10 +7,10 @@ module ViewComponentScopedCss
   class CurrentContext < ActiveSupport::CurrentAttributes
     attribute :css
 
-    def self.render(view)
+    def self.render
       return if css.empty?
 
-      view.safe_join(css.values)
+      css.values.join("\n").html_safe
     end
 
     def self.add(view_component)
