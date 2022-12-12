@@ -13,11 +13,12 @@ module ViewComponentScopedCss
       css.values.join("\n").html_safe
     end
 
-    def self.add(view_component)
+    def self.add(view_component_class)
       self.css ||= {}
-      self.css[view_component.class.name] ||= view_component.class.component_css_tag
+      self.css[view_component_class.name] ||= ViewComponentScopedCss::Tag.new(view_component_class).call
+      self.css[view_component_class.name]
     end
 
-    resets { self.css = {} }
+    resets { self.css = {} } if ViewComponentScopedCss.config.compile_cache
   end
 end

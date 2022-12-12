@@ -13,12 +13,8 @@ module ViewComponentScopedCss
     end
 
     class_methods do
-      def reload_component_css_tag
-        @component_css_tag = ViewComponentScopedCss::Tag.new(self).call
-      end
-
       def component_css_tag
-        @component_css_tag ||= ViewComponentScopedCss::Tag.new(self).call
+        ViewComponentScopedCss::CurrentContext.add(self)
       end
 
       def component_identifier
