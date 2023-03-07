@@ -2,23 +2,21 @@
 
 module ViewComponentScopedCss
   #
-  # Class for holding the <style></style> of the component called on each request.
+  # Manage whether CSS has been Render
   #
   class CurrentContext < ActiveSupport::CurrentAttributes
-    attribute :css
+    attribute :called
 
-    def self.render
-      return if css.empty?
-
-      css.values.join("\n").html_safe
+    def self.render_if_need(view_component_class)
+      self.called ||= {}
+      if called[view_component_class.name]
+        nil
+      else
+        called[view_component_class.name] = true
+        ViewComponentScopedCss::Tag.new(view_component_class).call
+      end
     end
 
-    def self.add(view_component_class)
-      self.css ||= {}
-      self.css[view_component_class.name] ||= ViewComponentScopedCss::Tag.new(view_component_class).call
-      self.css[view_component_class.name]
-    end
-
-    resets { self.css = {} } if ViewComponentScopedCss.config.compile_cache
+    resets { self.called = {} }
   end
 end

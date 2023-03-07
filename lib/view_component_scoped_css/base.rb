@@ -8,13 +8,9 @@ module ViewComponentScopedCss
   module Base
     extend ActiveSupport::Concern
 
-    included do
-      include ViewComponentScopedCss::Hook
-    end
-
     class_methods do
       def component_css_tag
-        ViewComponentScopedCss::CurrentContext.add(self)
+        ViewComponentScopedCss::CurrentContext.render_if_need(self)
       end
 
       def component_identifier
@@ -34,12 +30,16 @@ module ViewComponentScopedCss
       self.class.component_identifier_for_css
     end
 
-    def component_tag(name = ViewComponentScopedCss.config.component_tag, &block)
-      content_tag(
-        name,
-        class: [self.class.component_identifier_for_css, component_options[:class]].compact.join(" "),
-        **component_options,
-        &block
+    def component_tag(name = ViewComponentScopedCss.config.component_tag, **tag_options, &block)
+      safe_join(
+        [
+          self.class.component_css_tag,
+          content_tag(
+            name,
+            class: [self.class.component_identifier_for_css, tag_options[:class]].compact.join(" "),
+            **component_options, &block
+          )
+        ].compact
       )
     end
   end

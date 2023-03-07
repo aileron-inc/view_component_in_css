@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "tempfile"
+require "spec_helper"
 
 RSpec.describe ViewComponentScopedCss::Compiler do
   subject(:css) { described_class.new(path: scss_file.path, identifier: "Test").call }

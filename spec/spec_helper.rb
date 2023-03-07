@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
-require "view_component_in_css"
+require "view_component_scoped_css"
 require "pry"
+require "active_support/all"
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure

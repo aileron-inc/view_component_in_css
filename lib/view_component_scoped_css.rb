@@ -14,15 +14,10 @@ module ViewComponentScopedCss
   extend ActiveSupport::Autoload
   autoload :Loader
   autoload :CurrentContext
-  autoload :Hook
   autoload :Base
   autoload :Config
   autoload :Tag
   autoload :Compiler
-
-  def self.tags
-    CurrentContext.render
-  end
 
   def self.configure
     yield config

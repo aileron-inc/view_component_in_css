@@ -13,7 +13,7 @@ Gem::Specification.new do |spec|
     Inspired by the css in js component, it provides functionality to allow the same
     component-by-component implementation of styles in rails' standard component, view_components.
   "
-  spec.homepage      = "https://github.com/aileron-inc/view_component_in_css"
+  spec.homepage      = "https://github.com/aileron-inc/view_component_scoped_css"
   spec.license       = "MIT"
   spec.required_ruby_version = ">= 3.0"
 
